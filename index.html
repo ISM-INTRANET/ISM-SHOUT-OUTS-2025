@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ISM SHOUT-OUTS!!</title>
+
+<style>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ENTER SCREEN */
+#enterScreen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+#enterScreen.hide {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+/* ENTER BUTTON (PREMIUM STYLE) */
+#enterBtn {
+  background: transparent;
+  color: white;
+  border: 1.5px solid rgba(255,255,255,0.6);
+  padding: 18px 56px;
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(6px);
+}
+
+#enterBtn:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: white;
+  transform: scale(1.05);
+}
+
+#enterBtn:active {
+  transform: scale(0.98);
+}
+
+/* OPTIONAL HINT TEXT */
+.hint {
+  margin-top: 30px;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.5);
+}
+
+/*DISCLAIMER EDIT*/
+.disclaimer {
+  position: absolute;
+  bottom: 100px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+}
+
+/*RETURN BUTTON*/
+.back-btn {
+  margin-top: 40px;
+  padding: 14px 36px;
+  border: 1.5px solid #000;
+  text-decoration: none;
+  color: #000;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+
+/* SCROLL SECTIONS */
+.section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+/* IMAGE STYLE */
+.section img {
+  max-width: 75%;
+  border-radius: 14px;
+  margin-bottom: 24px;
+}
+
+/* TEXT STYLE */
+.section h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.section p {
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* BACKGROUND COLOURS PER SECTION */
+.section:nth-of-type(1) { background: #f4f4f4; }
+.section:nth-of-type(2) { background: #e9eef5; }
+.section:nth-of-type(3) { background: #fdf3e7; }
+.section:nth-of-type(4) { background: #eef6f0; }
+
+/* SMOOTH SNAP SCROLL */
+body {
+  scroll-snap-type: y mandatory;
+}
+
+.section {
+  scroll-snap-align: start;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ENTER SCREEN -->
+<div id="enterScreen">
+  <button id="enterBtn">ENTER</button>
+  <div class="hint">Have a peek</div>
+  <div class="disclaimer">Disclaimer: This is not a scam.</div>
+</div>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgm" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- CONTENT SECTIONS -->
+<div class="section">
+  <img src="img1.jpg" alt="">
+  <h2>Thank You Team</h2>
+  <p>Your dedication and hard work made this possible.</p>
+</div>
+
+<div class="section">
+  <img src="img2.jpg" alt="">
+  <h2>Event Participation</h2>
+  <p>Strong collaboration and engagement across teams.</p>
+</div>
+
+<div class="section">
+  <img src="img3.jpg" alt="">
+  <h2>Training & Knowledge Sharing</h2>
+  <p>Growing together through continuous learning.</p>
+</div>
+
+
+
+<div class="section">
+  <h2>Special Appreciation</h2>
+  <p>To everyone who went the extra mile — thank you.</p>
+
+  <!-- BACK TO INTRANET BUTTON -->
+  <a href="https://darebn.sharepoint.com/sites/ismnet"
+     class="back-btn"
+     target="_blank"
+     rel="noopener noreferrer">
+     ← Back to ISM Intranet
+  </a>
+</div>
+
+
+<script>
+const enterBtn = document.getElementById("enterBtn");
+const enterScreen = document.getElementById("enterScreen");
+const bgm = document.getElementById("bgm");
+
+enterBtn.addEventListener("click", () => {
+
+  /* FADE OUT ENTER SCREEN */
+  enterScreen.classList.add("hide");
+
+  /* START MUSIC */
+  bgm.volume = 0;
+  bgm.play();
+
+  /* FADE IN MUSIC */
+  let volume = 0;
+  const fadeIn = setInterval(() => {
+    volume += 0.05;
+    bgm.volume = Math.min(volume, 1);
+    if (volume >= 1) clearInterval(fadeIn);
+  }, 200);
+});
+</script>
+
+</body>
+</html>
