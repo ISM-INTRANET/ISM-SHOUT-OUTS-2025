@@ -6,7 +6,9 @@
 <title>ISM SHOUT-OUTS</title>
 
 <style>
-/* RESET */
+/* =====================
+   RESET
+===================== */
 * {
   margin: 0;
   padding: 0;
@@ -20,7 +22,7 @@ body {
 }
 
 /* =====================
-   ENTER SCREEN (MOBILE)
+   ENTER SCREEN
 ===================== */
 #enterScreen {
   position: fixed;
@@ -51,7 +53,13 @@ body {
   cursor: pointer;
 }
 
-
+/* ENTER hover */
+#enterBtn:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+  transition: all 0.25s ease;
+}
 
 .hint {
   margin-top: 30px;
@@ -77,47 +85,28 @@ body {
   text-align: center;
 }
 
-/* BANNERS (FULL WIDTH) */
-.section .banner {
+.appreciation {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* IMAGES */
+.banner {
   width: 100%;
-  max-width: 100%;
   margin-bottom: 16px;
 }
 
-/* MAIN IMAGES */
-.section img.main {
+.main {
   width: 100%;
   border-radius: 12px;
   margin-bottom: 12px;
 }
 
-/* TEXT */
-.section h2 {
-  font-size: 22px;
-  margin-bottom: 8px;
-}
-
-.section p {
-  font-size: 15px;
-  line-height: 1.5;
-  max-width: 90%;
-  margin: 0 auto;
-}
-
-/* SECTION BACKGROUNDS */
-.section:nth-child(1) { background:#eef1f5; }
-.section:nth-child(2) { background:#ffffff; }
-.section:nth-child(3) { background:#eef1f5; }
-.section:nth-child(4) { background:#ffffff; }
-.section:nth-child(5) { background:#eef1f5; }
-.section:nth-child(6) { background:#ffffff; }
-
 /* =====================
-   BACK BUTTON
+   BUTTONS (GLOBAL)
 ===================== */
 .back-btn {
   display: inline-block;
-  margin-top: 30px;
   padding: 14px 30px;
   border: 1.5px solid #000;
   text-decoration: none;
@@ -125,6 +114,31 @@ body {
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Global hover effect */
+.back-btn:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+/* Click press effect */
+.back-btn:active,
+#enterBtn:active {
+  transform: scale(0.97);
+}
+
+/* Side-by-side nav buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 30px;
+  flex-wrap: wrap;
 }
 </style>
 </head>
@@ -144,11 +158,8 @@ body {
 </audio>
 
 <!-- CONTENT -->
-<div class="section">
-  <h2>Special Appreciation</h2>
-  <p>To everyone who went the extra mile — thank you.</p>
-
-  
+<div class="section appreciation">
+  <img src="gif1.gif" class="main">
 </div>
 
 <div class="section">
@@ -164,8 +175,9 @@ body {
 
 <div class="section">
   <img src="banner3.png" class="banner">
+  <img src="gif2.gif" class="main">
+  <img src="img7.jpg" class="main">
   <img src="img8.jpg" class="main">
-  <img src="img6.jpg" class="main">
 </div>
 
 <div class="section">
@@ -176,26 +188,29 @@ body {
 
 <div class="section">
   <img src="banner5.png" class="banner">
-  <img src="img9.jpg" class="main"> 
+  <img src="img9.jpg" class="main">
 
-  <a href="https://darebn.sharepoint.com/sites/ismnet"
-     class="back-btn"
-     target="_blank"
-     rel="noopener noreferrer">
-     ← Back to ISM Intranet
-  </a>
+  <div class="nav-buttons">
+    <button id="inlineBackToTop" class="back-btn">↑ Back to Top</button>
 
+    <a href="https://darebn.sharepoint.com/sites/ismnet"
+       class="back-btn"
+       rel="noopener noreferrer">
+       Back to ISM Intranet →
+    </a>
+  </div>
 </div>
-
-
 
 <script>
 const enterBtn = document.getElementById("enterBtn");
 const enterScreen = document.getElementById("enterScreen");
 const bgm = document.getElementById("bgm");
+const inlineBackToTop = document.getElementById("inlineBackToTop");
 
+/* ENTER */
 enterBtn.addEventListener("click", () => {
   enterScreen.classList.add("hide");
+  window.scrollTo(0, 0);
 
   bgm.volume = 0;
   bgm.play();
@@ -206,6 +221,14 @@ enterBtn.addEventListener("click", () => {
     bgm.volume = Math.min(v, 1);
     if (v >= 1) clearInterval(fade);
   }, 200);
+});
+
+/* INLINE BACK TO TOP */
+inlineBackToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 });
 </script>
 
