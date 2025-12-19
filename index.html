@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISM SHOUT-OUTS</title>
+
+<style>
+/* =====================
+   RESET
+===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #eef1f5;
+  color: #111;
+}
+
+/* =====================
+   ENTER SCREEN
+===================== */
+#enterScreen {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+#enterScreen.hide {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+#enterBtn {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.75);
+
+  /* SIZE */
+  padding: 32px 102px;        /* ↑ button size */
+  font-size: 38px;           /* ↑ text size */
+  letter-spacing: 5px;
+
+  text-transform: uppercase;
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+}
+
+
+/* ENTER hover */
+#enterBtn:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+  transition: all 0.25s ease;
+}
+
+.hint {
+  margin-top: 30px;
+  font-size: 40px;
+  font-style: italic;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.6);
+}
+
+.disclaimer {
+  position: absolute;
+  bottom: 90px;
+  font-size: 40px;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+}
+
+/* =====================
+   CONTENT SECTIONS
+===================== */
+.section {
+  padding: 40px 16px;
+  text-align: center;
+}
+
+.appreciation {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* IMAGES */
+.banner {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.main {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+/* =====================
+   BUTTONS (GLOBAL)
+===================== */
+.back-btn {
+  display: inline-block;
+  padding: 14px 30px;
+  border: 1.5px solid #000;
+  text-decoration: none;
+  color: #000;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Global hover effect */
+.back-btn:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+/* Click press effect */
+.back-btn:active,
+#enterBtn:active {
+  transform: scale(0.97);
+}
+
+/* Side-by-side nav buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ENTER SCREEN -->
+<div id="enterScreen">
+  <button id="enterBtn">ENTER</button>
+  <div class="hint">Have a peek! Do you know what ISM has done so far? If you're not that curious, don't press this button.</div>
+  <div class="disclaimer">Disclaimer: This is legit. ISM SDT prepared this. It's not a scam. Promise! 🫰</div>
+</div>
+
+<!-- MUSIC -->
+<audio id="bgm" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- CONTENT -->
+<div class="section appreciation">
+  <img src="img0.jpg" class="main">
+
+</div>
+
+
+<div class="section">
+  <img src="banner1.png" class="banner">
+  <img src="gif3.gif" class="main">
+  <img src="gif4.gif" class="main">
+  <img src="gif7.gif" class="main">
+  <img src="img10.jpg" class="main">
+</div>
+
+<div class="section">
+  <img src="banner2.png" class="banner">
+  <img src="gif5.gif" class="main">
+  <img src="gif6.gif" class="main">
+  <img src="gif8.gif" class="main">
+</div>
+
+<div class="section">
+  <img src="banner3.png" class="banner">
+  <img src="gif13.gif" class="main">
+  <img src="gif14.gif" class="main">
+  <img src="img15.jpg" class="main">
+</div>
+
+<div class="section">
+  <img src="banner4.png" class="banner">
+  <img src="gif11.gif" class="main">
+  <img src="gif12.gif" class="main">
+</div>
+
+<div class="section">
+  <img src="banner5.png" class="banner">
+  <img src="img16.jpg" class="main">
+  <img src="img17.jpg" class="main">
+  <img src="img18.jpg" class="main">
+</div>
+
+<div class="section">
+  <img src="banner6.png" class="banner">
+  <img src="gif20.gif" class="main">
+</div>
+
+<div class="section">
+  <img src="banner6.1.png" class="banner">
+  <img src="img21.jpg" class="main">
+</div>
+
+
+<div class="section">
+  <img src="gif22.gif" class="main">
+
+  <div class="nav-buttons">
+    <button id="inlineBackToTop" class="back-btn">↑ Back to Top</button>
+
+    <a href="https://darebn.sharepoint.com/sites/ismnet"
+       class="back-btn"
+       rel="noopener noreferrer">
+       Back to ISM Intranet →
+    </a>
+  </div>
+</div>
+
+<script>
+const enterBtn = document.getElementById("enterBtn");
+const enterScreen = document.getElementById("enterScreen");
+const bgm = document.getElementById("bgm");
+const inlineBackToTop = document.getElementById("inlineBackToTop");
+
+/* ENTER */
+enterBtn.addEventListener("click", () => {
+  enterScreen.classList.add("hide");
+  window.scrollTo(0, 0);
+
+  bgm.volume = 0;
+  bgm.play();
+
+  let v = 0;
+  const fade = setInterval(() => {
+    v += 0.05;
+    bgm.volume = Math.min(v, 1);
+    if (v >= 1) clearInterval(fade);
+  }, 200);
+});
+
+/* INLINE BACK TO TOP */
+inlineBackToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+</script>
+
+</body>
+</html>
